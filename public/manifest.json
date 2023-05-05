@@ -1,7 +1,7 @@
 {
-  "name": "Seu Nome de Aplicativo",
-  "short_name": "NomeCurto",
-  "description": "Uma breve descrição do seu aplicativo",
+  "name": "Pokédex",
+  "short_name": "Pokédex",
+  "description": "Sua pokédex direto no seu celular",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
