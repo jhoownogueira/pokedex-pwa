@@ -11,7 +11,7 @@ export default function Home() {
           <meta name="creator" content="Jhonata Nogueira" />
           <meta name="title" content="Pokédex | PWA" />
         </Head>
-        <h1>Hello World!</h1>
+        <h1>Pokédex</h1>
         <Airplay size={32} weight="fill" />
       </>
   );
