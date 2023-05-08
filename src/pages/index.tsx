@@ -1,5 +1,5 @@
 import Head from "next/head";
-import {HomeContainer} from "@/pages/style";
+import {HomeContainer} from "@/pages/styles";
 import {MagnifyingGlass} from "@phosphor-icons/react";
 
 export default function Home() {
