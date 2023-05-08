@@ -12,6 +12,17 @@ const withPWA = require('next-pwa')({
         },
       },
     },
+    {
+      urlPattern: /^https?:\/\/.*\.(woff)/,
+      handler: 'CacheFirst',
+      options: {
+        cacheName: 'other-webfonts',
+        expiration: {
+          maxEntries: 10,
+          maxAgeSeconds: 7 * 24 * 60 * 60,
+        },
+      },
+    },
     // Outras configurações de cache, se necessário
   ],
 })
