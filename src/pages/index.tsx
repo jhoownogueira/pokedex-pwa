@@ -1,5 +1,6 @@
 import Head from "next/head";
-import {Airplay} from "@phosphor-icons/react";
+import {HomeContainer} from "@/pages/style";
+import {MagnifyingGlass} from "@phosphor-icons/react";
 
 export default function Home() {
 
@@ -11,8 +12,16 @@ export default function Home() {
           <meta name="creator" content="Jhonata Nogueira" />
           <meta name="title" content="Pokédex | PWA" />
         </Head>
-        <h1>Pokédex</h1>
-        <Airplay size={32} weight="fill" />
+        <HomeContainer>
+            <header>
+                <span>Selecione o seu</span>
+                <span><strong>Pokémon</strong></span>
+            </header>
+            <section className="search-pokemon">
+                <label><MagnifyingGlass size={16} weight="bold" /></label>
+                <input type="text" placeholder="Pesquisar" />
+            </section>
+        </HomeContainer>
       </>
   );
 }
