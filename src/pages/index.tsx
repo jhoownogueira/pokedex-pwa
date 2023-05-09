@@ -1,5 +1,4 @@
 import Head from "next/head";
-import {MagnifyingGlass} from "@phosphor-icons/react";
 import {HomeContainer} from "@/styles/homeStyles";
 
 export default function Home() {
@@ -13,13 +12,38 @@ export default function Home() {
           <meta name="title" content="Pokédex | PWA" />
         </Head>
         <HomeContainer>
-            <header>
-                <span>Selecione o seu</span>
-                <span><strong>Pokémon</strong></span>
-            </header>
-            <section className="search-pokemon">
-                <label><MagnifyingGlass size={16} weight="bold" /></label>
-                <input type="text" placeholder="Pesquisar" />
+            <section>
+                <header>
+                    <div className="spearker-display">
+                        <div className="spearker-square square-blue"></div>
+                        <div className="spearker-square square-blue-sky"></div>
+                        <div className="spearker-square square-blue"></div>
+                        <div className="spearker-square square-blue-sky"></div>
+                        <div className="spearker-square square-white"></div>
+                        <div className="spearker-square square-blue-sky"></div>
+                        <div className="spearker-square square-blue"></div>
+                        <div className="spearker-square square-blue-sky"></div>
+                        <div className="spearker-square square-blue"></div>
+                    </div>
+                    <div className="spearker-led">
+                        <div className="spearker-square square-red"></div>
+                        <div className="spearker-square square-yellow"></div>
+                        <div className="spearker-square square-green"></div>
+                    </div>
+                </header>
+
+                <section className="hr-top">
+                    <img src='/images/pokedex/hr-top.svg' alt="" />
+                </section>
+                <h1>Pokédex</h1>
+
+                <section className="led">
+                    <img src="/images/pokedex/led.svg" alt="" />
+                </section>
+
+                <footer>
+                    <button><span>Entrar</span></button>
+                </footer>
             </section>
         </HomeContainer>
       </>
