@@ -1,6 +1,7 @@
 import Head from "next/head";
 import {HomeContainer} from "@/styles/homeStyles";
 import Link from "next/link";
+import {DefaultLayout} from "@/layouts/default";
 
 export default function Home() {
 
@@ -50,3 +51,5 @@ export default function Home() {
       </>
   );
 }
+
+Home.PageLayout = DefaultLayout;

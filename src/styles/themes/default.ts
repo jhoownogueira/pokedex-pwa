@@ -12,7 +12,7 @@ export const defaultTheme = {
 
     'hr': '#D3D3D3',
 
-    'bg': '#000000',
+    'bg': '#EFEFEF',
     'bg-body': '#EDEDED',
 
     'status-red': '#EA3D4A',

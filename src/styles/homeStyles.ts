@@ -17,8 +17,6 @@ export const HomeContainer = styled.div`
     align-items: start;
     justify-content: start;  
     background: #D42B4D;
-    border-radius: 6px;
-    
     
     header {
       display: flex;
