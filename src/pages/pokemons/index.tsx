@@ -1,9 +1,9 @@
-import {PokemonsContainer} from "@/pages/pokemons/styles";
+import {PokemonsContainer} from "@/styles/pokemons/styles";
 
 export default function Pokemons() {
     return (
         <PokemonsContainer>
-            <h1>Pokemons</h1>
+            <h1>Pokémons</h1>
         </PokemonsContainer>
     )
 }
