@@ -1,5 +1,6 @@
 import Head from "next/head";
 import {HomeContainer} from "@/styles/homeStyles";
+import Link from "next/link";
 
 export default function Home() {
 
@@ -42,7 +43,7 @@ export default function Home() {
                 </section>
 
                 <footer>
-                    <button><span>Entrar</span></button>
+                    <Link href="/pokemons"><span>Entrar</span></Link>
                 </footer>
             </section>
         </HomeContainer>

@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 export const HomeContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #000000;
-  padding: 24px;
   
   section {
     width: 100%;
@@ -25,7 +24,7 @@ export const HomeContainer = styled.div`
       display: flex;
       justify-content: flex-start;
       gap: 24px;
-      padding: 24px 24px 0 24px;
+      padding: 16px 16px 0 16px;
       
       .spearker-display {
         max-width: 60px;
@@ -101,7 +100,7 @@ export const HomeContainer = styled.div`
       height: fit-content;
       
       img {
-        width: 80%;
+        width: 70%;
       }
     }
     
@@ -112,7 +111,7 @@ export const HomeContainer = styled.div`
       align-items: center;
       justify-content: center;
       
-      button {
+      a {
         width: 100%;
         max-width: 280px;
         height: 48px;
