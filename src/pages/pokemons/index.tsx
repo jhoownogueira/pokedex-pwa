@@ -2,6 +2,7 @@ import {CardPokemons, PokemonsContainer} from "@/styles/pokemons/styles";
 import {PokemonsLayout} from "@/layouts/pokemonsLayout";
 import {useContext, useEffect, useState} from "react";
 import {PokemonContext} from "@/context/pokemonsContext";
+import {api} from "@/services/api";
 
 interface PokemonsProps {
     id: number;
@@ -20,8 +21,8 @@ export default function Pokemons() {
         const fetchPokemonsData = async () => {
             const updatedPokemonsList = await Promise.all(
                 pokemonsList.map(async (pokemon) => {
-                    const response = await fetch(pokemon.url);
-                    const pokemonData = await response.json();
+                    const response = await api.get(pokemon.url);
+                    const pokemonData = response.data;
                     const { id, name, sprites, types } = pokemonData;
                     const imageUrl = sprites.front_default;
                     const type = types[0].type.name;
