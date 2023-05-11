@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const PokemonsContainer = styled.section`
   
   background: #EFEFEF;
@@ -16,7 +17,7 @@ export const PokemonsContainer = styled.section`
 
 `;
 
-export const CardPokemons = styled.div`
+export const CardPokemons = styled.a`
   width: 108px;
   height: 108px;
   display: flex;
@@ -26,6 +27,8 @@ export const CardPokemons = styled.div`
   background: #fff;
   box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
+  text-decoration: none;
+  color: #666666;
   
   header {
     width: 100%;
