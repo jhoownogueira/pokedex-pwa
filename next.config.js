@@ -29,11 +29,22 @@ const withPWA = require('next-pwa')({
       options: {
         cacheName: 'pokeapi-data',
         expiration: {
-          maxEntries: 200,
+          maxEntries: 6000,
           maxAgeSeconds: 30 * 24 * 60 * 60, // 30 dias
         },
       },
-    }
+    },
+    {
+      urlPattern: /^https:\/\/.*\.(png|jpg|jpeg|svg|gif)/, // Adicione aqui o padrão de URL das imagens
+      handler: 'CacheFirst',
+      options: {
+        cacheName: 'image-cache',
+        expiration: {
+          maxEntries: 6000,
+          maxAgeSeconds: 30 * 24 * 60 * 60, // 30 dias
+        },
+      },
+    },
 
     // Outras configurações de cache, se necessário
   ],
