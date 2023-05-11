@@ -23,6 +23,18 @@ const withPWA = require('next-pwa')({
         },
       },
     },
+    {
+      urlPattern: /^https:\/\/pokeapi\.co\/api\/v2\/pokemon/,
+      handler: 'NetworkFirst',
+      options: {
+        cacheName: 'pokeapi-data',
+        expiration: {
+          maxEntries: 200,
+          maxAgeSeconds: 30 * 24 * 60 * 60, // 30 dias
+        },
+      },
+    },
+
     // Outras configurações de cache, se necessário
   ],
 })
