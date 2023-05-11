@@ -41,4 +41,32 @@ export const HeaderPokemons = styled.header`
     }
   }
   
+  .buttons {
+    margin-top: 32px;
+    display: flex;
+    justify-content: end;
+    button {
+      width: 100%;
+      max-width: 150px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url("/images/buttons/base.svg") no-repeat center center;
+      background-size: contain;
+      border: 0;
+      
+      span {
+        font-size: 12px;
+        color: #fff;
+        padding-bottom: 6px;
+      }
+      
+      &:hover {
+        filter: brightness(110%);
+      }
+      
+    }
+  }
+  
 `;

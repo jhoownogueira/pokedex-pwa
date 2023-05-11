@@ -8,6 +8,7 @@ export const PokemonsContainer = styled.section`
   height: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
   padding-top: 180px;
   padding-bottom: 100px;
   padding-left: 16px;

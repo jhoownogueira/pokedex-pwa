@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import { GlobalStyles } from "@/styles/global";
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "@/styles/themes/default";
+import {PokemonsContextProvider} from "@/context/pokemonsContext";
 
 type ComponentWithPageLayout = AppProps & {
     Component: AppProps["Component"] & {
@@ -11,6 +12,7 @@ type ComponentWithPageLayout = AppProps & {
 
 export default function App({ Component, pageProps }: ComponentWithPageLayout) {
   return (
+      <PokemonsContextProvider>
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyles />
           {Component.PageLayout ? (
@@ -21,5 +23,6 @@ export default function App({ Component, pageProps }: ComponentWithPageLayout) {
               <Component {...pageProps} />
           )}
       </ThemeProvider>
+      </PokemonsContextProvider>
   );
 }
