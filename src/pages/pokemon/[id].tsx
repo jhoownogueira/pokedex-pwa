@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { DefaultLayout } from "@/layouts/default";
 import { PokemonContainer } from "@/styles/pokemon/styles";
-import { CaretCircleLeft } from "@phosphor-icons/react";
+import {CaretCircleLeft, HandbagSimple, Ruler} from "@phosphor-icons/react";
 import Link from 'next/link';
 
 interface PokemonProps {
     id: number;
     name: string;
+    weight: number;
+    height: number;
     sprites: {
         front_default: string;
     };
@@ -21,6 +23,11 @@ interface PokemonProps {
         name: string;
         url: string;
     };
+    moves: [
+        move: {
+            move: { name: string; };
+    }
+    ]
 }
 
 interface SpeciesProps {
@@ -124,6 +131,8 @@ export default function PokemonPage() {
         return <div>Loading...</div>;
     }
 
+    console.log(pokemon);
+
     return (
         <>
             <PokemonContainer type={pokemonType}>
@@ -132,6 +141,43 @@ export default function PokemonPage() {
                     <CaretCircleLeft size={64} onClick={() => router.push("/pokemons")} />
                     <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                 </header>
+
+                <main>
+                    <div className='title'>
+                        <h2>SOBRE</h2>
+                        <div className='types'>
+                            {pokemon.types.slice(0, 2).map((type) => (
+                                <article key={type.type.name} className={type.type.name}></article>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="data">
+                        <ul>
+                            <li>
+                                <span>Peso</span>
+                                <div className="peso">
+                                    <HandbagSimple size={18} />
+                                    <p>{(pokemon.weight / 10).toFixed(2)}Kg</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Altura</span>
+                                <div className="altura">
+                                    <Ruler size={18} />
+                                    <p>{(pokemon.height / 10).toFixed(2)}Mt</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Movimentos</span>
+                                <div className="movimentos">
+                                        {pokemon.moves.map((move) => (
+                                            <p>{move.move.name.toUpperCase()}</p>
+                                        ))}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </main>
 
                 <footer>
                     <ul>

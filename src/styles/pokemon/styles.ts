@@ -50,41 +50,41 @@ const getTypeBackground = (type: string) => {
 const getTypeButton = (type: string) => {
     switch (type) {
         case "poison":
-            return "url('/images/buttons/poison.png')";
+            return "url('/images/buttons/poison.svg')";
         case "steel":
-            return "url('/images/buttons/steel.png')";
+            return "url('/images/buttons/steel.svg')";
         case "fairy":
-            return "url('/images/buttons/fairy.png')";
+            return "url('/images/buttons/fairy.svg')";
         case "water":
-            return "url('/images/buttons/water.png')";
+            return "url('/images/buttons/water.svg')";
         case "fire":
-            return "url('/images/buttons/fire.png')";
+            return "url('/images/buttons/fire.svg')";
         case "ice":
-            return "url('/images/buttons/ice.png')";
+            return "url('/images/buttons/ice.svg')";
         case "electric":
-            return "url('/images/buttons/electric.png')";
+            return "url('/images/buttons/electric.svg')";
         case "normal":
-            return "url('/images/buttons/normal.png')";
+            return "url('/images/buttons/normal.svg')";
         case "dragon":
-            return "url('/images/buttons/dragon.png')";
+            return "url('/images/buttons/dragon.svg')";
         case "bug":
-            return "url('/images/buttons/bug.png')";
+            return "url('/images/buttons/bug.svg')";
         case "grass":
-            return "url('/images/buttons/grass.png')";
+            return "url('/images/buttons/grass.svg')";
         case "flying":
-            return "url('/images/buttons/flying.png')";
+            return "url('/images/buttons/flying.svg')";
         case "ground":
-            return "url('/images/buttons/ground.png')";
+            return "url('/images/buttons/ground.svg')";
         case "rock":
-            return "url('/images/buttons/rock.png')";
+            return "url('/images/buttons/rock.svg')";
         case "dark":
-            return "url('/images/buttons/dark.png')";
+            return "url('/images/buttons/dark.svg')";
         case "ghost":
-            return "url('/images/buttons/ghost.png')";
+            return "url('/images/buttons/ghost.svg')";
         case "psychic":
-            return "url('/images/buttons/psychic.png')";
+            return "url('/images/buttons/psychic.svg')";
         case "fight":
-            return "url('/images/buttons/fight.png')";
+            return "url('/images/buttons/fight.svg')";
         default:
             return "";
     }
@@ -135,9 +135,11 @@ const getTypeColor = (type: string) => {
 
 export const PokemonContainer = styled.section<PokemonContainerProps>`
   width: 100%;
+  max-width: 480px;
   height: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
   
   header {
     position: relative;
@@ -179,29 +181,173 @@ export const PokemonContainer = styled.section<PokemonContainerProps>`
     }
   }
   
+  main {
+    width: 100%;
+    max-width: 480px;
+    padding: 0 16px;
+    .title {
+      width: 100%;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      .types {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        article {
+          width: 91px;
+          height: 40px;
+          background-size: contain;
+        }
+      }
+    }
+    
+    .data {
+      width: 100%;
+      height: 64px;
+      margin-top: 16px;
+      
+      ul {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        
+        li {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: start;
+          gap: 8px;
+          span {
+            font-size: 10px;
+            color: #666666;
+          }
+          
+          p {
+            font-size: 12px;
+            font-weight: bold;
+            color: #1D1D1D;
+          }
+          
+          .peso, .altura, .movimentos {
+            width: 100%;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+            gap: 4px;
+          }
+          
+          .movimentos {
+            width: 100%;
+            max-height: 38px;
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            padding: 0 8px;
+            p {
+              font-size: 8px;
+            }
+          }
+          
+          &:nth-child(2) {
+            border-left: 1px solid #666666;
+            border-right: 1px solid #666666;
+          }
+        }
+      }
+    }
+  }
+  
   footer {
     position: fixed;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     bottom: 0;
     width: 100%;
-    height: 64px;
+    max-width: 480px;
+    height: 96px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
+    padding: 16px;
     background: ${props => getTypeColor(props.type)};
     ul {
       width: 100%;
       height: 100%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
+      gap: 24px;
       li {
+        width: 96px;
+        height: 96px;
         a {
-          
+          width: 96px;
+          height: 96px;
+          img {
+            width: 96px;
+            height: 96px;
+          }
         }
       }
     }
   }
-
+  
+  .poison {
+    background: url('/images/buttons/poison.svg') no-repeat center center;
+  }
+  .steel {
+    background: url('/images/buttons/steel.svg') no-repeat center center;
+  }
+  .fairy {
+    background: url('/images/buttons/fairy.svg') no-repeat center center;
+  }
+  .water {
+    background: url('/images/buttons/water.svg') no-repeat center center;
+  }
+  .fire {
+    background: url('/images/buttons/fire.svg') no-repeat center center;
+  }
+  .ice {
+    background: url('/images/buttons/ice.svg') no-repeat center center;
+  }
+  .electric {
+    background: url('/images/buttons/electric.svg') no-repeat center center;
+  }
+  .normal {
+    background: url('/images/buttons/normal.svg') no-repeat center center;
+  }
+  .dragon {
+    background: url('/images/buttons/dragon.svg') no-repeat center center;
+  }
+  .bug {
+    background: url('/images/buttons/bug.svg') no-repeat center center;
+  }
+  .grass {
+    background: url('/images/buttons/grass.svg') no-repeat center center;
+  }
+  .flying {
+    background: url('/images/buttons/flying.svg') no-repeat center center;
+  }
+  .rock {
+    background: url('/images/buttons/rock.svg') no-repeat center center;
+  }
+  .dark {
+    background: url('/images/buttons/dark.svg') no-repeat center center;
+  }
+  .ghost {
+    background: url('/images/buttons/ghost.svg') no-repeat center center;
+  }
+  .psychic {
+    background: url('/images/buttons/psychic.svg') no-repeat center center;
+  }
+  .fight {
+    background: url('/images/buttons/fight.svg') no-repeat center center;
+  }
 `;

@@ -65,7 +65,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: ${(props) => props.theme["primary"]};
+    background-color: #666666;
     border-radius: 20px;
   }
 `;
