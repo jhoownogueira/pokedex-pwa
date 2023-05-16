@@ -5,6 +5,7 @@ import { DefaultLayout } from "@/layouts/default";
 import { PokemonContainer } from "@/styles/pokemon/styles";
 import {CaretCircleLeft, HandbagSimple, Ruler} from "@phosphor-icons/react";
 import Link from 'next/link';
+import {ContainerSpinner, StyledSpinner} from "@/styles/spinner";
 
 interface PokemonProps {
     id: number;
@@ -27,6 +28,14 @@ interface PokemonProps {
         move: {
             move: { name: string; };
     }
+    ];
+    stats: [
+        statusBase: {
+            base_stat: number;
+            stat: {
+                name: string;
+            }
+        }
     ]
 }
 
@@ -61,7 +70,8 @@ export default function PokemonPage() {
     const [pokemon, setPokemon] = useState<PokemonProps | null>(null);
     const [pokemonType, setPokemonType] = useState<string>("");
     const [evolutionChain, setEvolutionChain] = useState<EvolutionChainProps | null>(null);
-    const [evolutions, setEvolutions] = useState<any[]>([]); // Adicione este estado
+    const [evolutions, setEvolutions] = useState<any[]>([]);
+    const [evolutionsLoading, setEvolutionsLoading] = useState<boolean>(false);
 
     useEffect(() => {
         if (id) {
@@ -103,6 +113,8 @@ export default function PokemonPage() {
             return;
         }
 
+        setEvolutionsLoading(true);
+
         const evolutions = [];
         let currentEvolution = evolutionChainData.chain;
 
@@ -124,14 +136,28 @@ export default function PokemonPage() {
             currentEvolution = currentEvolution.evolves_to[0];
         }
 
-        setEvolutions(evolutions); // Armazene as evoluções no estado
+        setEvolutions(evolutions);
+        setEvolutionsLoading(false);
     };
 
     if (!pokemon) {
-        return <div>Loading...</div>;
+        return (
+            <>
+                <ContainerSpinner>
+                    <StyledSpinner viewBox="0 0 50 50">
+                        <circle
+                            className="path"
+                            cx="25"
+                            cy="25"
+                            r="20"
+                            fill="none"
+                            strokeWidth="4"
+                        />
+                    </StyledSpinner>
+                </ContainerSpinner>
+            </>
+        )
     }
-
-    console.log(pokemon);
 
     return (
         <>
@@ -177,11 +203,49 @@ export default function PokemonPage() {
                             </li>
                         </ul>
                     </div>
+                    <div className="status">
+                        <ul>
+                            {pokemon.stats.map((stat) => (
+                                <li key={stat.stat.name}>
+                                    <div className="top-bar">
+                                        <span>{stat.stat.name.toUpperCase()}</span>
+                                        <span>{stat.base_stat}</span>
+                                    </div>
+                                    <div className="progress-bar">
+                                        <div className="progress-max">
+                                            <div
+                                                className="progress-current"
+                                                style={{
+                                                    width: `${(stat.base_stat / 200) * 100}%`,
+                                                }}
+                                            >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </main>
 
                 <footer>
                     <ul>
-                        {evolutions} {/* renderize as evoluções a partir do estado */}
+                        {evolutionsLoading ? (
+                            <ContainerSpinner>
+                                <StyledSpinner viewBox="0 0 50 50">
+                                    <circle
+                                        className="path"
+                                        cx="25"
+                                        cy="25"
+                                        r="20"
+                                        fill="none"
+                                        strokeWidth="4"
+                                    />
+                                </StyledSpinner>
+                            </ContainerSpinner>
+                        ) : (
+                            evolutions
+                        )}
                     </ul>
                 </footer>
             </PokemonContainer>

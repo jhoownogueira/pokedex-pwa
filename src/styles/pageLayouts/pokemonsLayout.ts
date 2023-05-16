@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const HeaderPokemons = styled.header`
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   max-width: 480px;
   height: 168px;

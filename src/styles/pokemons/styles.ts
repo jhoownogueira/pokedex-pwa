@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export const PokemonsContainer = styled.section`
-  
+
   background: #EFEFEF;
   width: 100%;
   max-width: 480px;
@@ -10,10 +10,8 @@ export const PokemonsContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  padding-top: 180px;
-  padding-bottom: 100px;
-  padding-left: 16px;
-  padding-right: 16px;
+  margin: 0 auto;
+  padding: 180px 16px 100px;
 
 `;
 

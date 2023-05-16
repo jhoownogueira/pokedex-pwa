@@ -6,6 +6,7 @@ export const ContainerSpinner = styled.div`
   max-width: 480px;
   height: 100vh;
   display: flex;
+  margin: 0 auto;
   align-items: center;
   justify-content: center;
 `;
@@ -18,7 +19,7 @@ export const StyledSpinner = styled.svg`
   height: 50px;
   
   & .path {
-    stroke: #D42B4D;
+    stroke: #666666;
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
   }

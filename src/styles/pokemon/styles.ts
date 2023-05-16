@@ -133,6 +133,23 @@ const getTypeColor = (type: string) => {
     }
 };
 
+function hexToRgb(hex: string): string {
+    let r = 0, g = 0, b = 0;
+
+    if (hex.length == 4) {
+        r = parseInt(hex[1] + hex[1], 16);
+        g = parseInt(hex[2] + hex[2], 16);
+        b = parseInt(hex[3] + hex[3], 16);
+    } else if (hex.length == 7) {
+        r = parseInt(hex[1] + hex[2], 16);
+        g = parseInt(hex[3] + hex[4], 16);
+        b = parseInt(hex[5] + hex[6], 16);
+    }
+
+    return r + "," + g + "," + b;
+}
+
+
 export const PokemonContainer = styled.section<PokemonContainerProps>`
   width: 100%;
   max-width: 480px;
@@ -140,18 +157,19 @@ export const PokemonContainer = styled.section<PokemonContainerProps>`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  
+  padding-bottom: 128px;
+
   header {
     position: relative;
     width: 100%;
-    height: 420px;
+    height: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     background: ${props => getTypeBackground(props.type)} no-repeat right top;
-    background-size: 70%;
-    
+    background-size: 60%;
+
     img {
       position: absolute;
       bottom: 0;
@@ -160,7 +178,7 @@ export const PokemonContainer = styled.section<PokemonContainerProps>`
       width: 200px;
       height: 200px;
     }
-    
+
     h1 {
       position: absolute;
       bottom: 48px;
@@ -170,7 +188,7 @@ export const PokemonContainer = styled.section<PokemonContainerProps>`
       font-size: 24px;
       color: ${props => getTypeColor(props.type)};
     }
-    
+
     svg {
       width: 64px;
       height: 64px;
@@ -180,21 +198,25 @@ export const PokemonContainer = styled.section<PokemonContainerProps>`
       color: ${props => getTypeColor(props.type)};
     }
   }
-  
+
   main {
     width: 100%;
     max-width: 480px;
     padding: 0 16px;
+
     .title {
       width: 100%;
       display: flex;
       align-items: end;
       justify-content: space-between;
+      margin-top: 16px;
+
       .types {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 8px;
+
         article {
           width: 91px;
           height: 40px;
@@ -202,19 +224,19 @@ export const PokemonContainer = styled.section<PokemonContainerProps>`
         }
       }
     }
-    
+
     .data {
       width: 100%;
       height: 64px;
       margin-top: 16px;
-      
+
       ul {
         width: 100%;
         height: 100%;
         display: flex;
         align-items: start;
         justify-content: space-between;
-        
+
         li {
           width: 100%;
           height: 100%;
@@ -223,17 +245,18 @@ export const PokemonContainer = styled.section<PokemonContainerProps>`
           align-items: center;
           justify-content: start;
           gap: 8px;
+
           span {
             font-size: 10px;
             color: #666666;
           }
-          
+
           p {
             font-size: 12px;
             font-weight: bold;
             color: #1D1D1D;
           }
-          
+
           .peso, .altura, .movimentos {
             width: 100%;
             display: flex;
@@ -241,7 +264,7 @@ export const PokemonContainer = styled.section<PokemonContainerProps>`
             justify-content: center;
             gap: 4px;
           }
-          
+
           .movimentos {
             width: 100%;
             max-height: 38px;
@@ -249,12 +272,13 @@ export const PokemonContainer = styled.section<PokemonContainerProps>`
             display: flex;
             flex-direction: column;
             align-items: start;
-            padding: 0 8px;
+            padding: 32px 8px 8px;
+
             p {
               font-size: 8px;
             }
           }
-          
+
           &:nth-child(2) {
             border-left: 1px solid #666666;
             border-right: 1px solid #666666;
@@ -262,8 +286,47 @@ export const PokemonContainer = styled.section<PokemonContainerProps>`
         }
       }
     }
+
+    .status {
+      margin-top: 16px;
+
+      ul {
+        li {
+          .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            span {
+              color: #666666;
+              font-size: 12px;
+
+              &:nth-child(1) {
+                color: ${props => getTypeColor(props.type)};
+                font-size: 8px;
+              }
+            }
+          }
+
+          .progress-bar {
+            .progress-max {
+              background: rgba(${props => hexToRgb(getTypeColor(props.type))}, 0.5);
+              border-radius: 999px;
+              height: 8px;
+              width: 100%;
+
+              .progress-current {
+                background: ${props => getTypeColor(props.type)};
+                border-radius: 999px;
+                height: 8px;
+              }
+            }
+          }
+        }
+      }
+    }
   }
-  
+
   footer {
     position: fixed;
     left: 50%;
@@ -277,6 +340,7 @@ export const PokemonContainer = styled.section<PokemonContainerProps>`
     justify-content: center;
     padding: 16px;
     background: ${props => getTypeColor(props.type)};
+
     ul {
       width: 100%;
       height: 100%;
@@ -284,12 +348,15 @@ export const PokemonContainer = styled.section<PokemonContainerProps>`
       align-items: center;
       justify-content: flex-start;
       gap: 24px;
+
       li {
         width: 96px;
         height: 96px;
+
         a {
           width: 96px;
           height: 96px;
+
           img {
             width: 96px;
             height: 96px;
@@ -298,55 +365,71 @@ export const PokemonContainer = styled.section<PokemonContainerProps>`
       }
     }
   }
-  
+
   .poison {
     background: url('/images/buttons/poison.svg') no-repeat center center;
   }
+
   .steel {
     background: url('/images/buttons/steel.svg') no-repeat center center;
   }
+
   .fairy {
     background: url('/images/buttons/fairy.svg') no-repeat center center;
   }
+
   .water {
     background: url('/images/buttons/water.svg') no-repeat center center;
   }
+
   .fire {
     background: url('/images/buttons/fire.svg') no-repeat center center;
   }
+
   .ice {
     background: url('/images/buttons/ice.svg') no-repeat center center;
   }
+
   .electric {
     background: url('/images/buttons/electric.svg') no-repeat center center;
   }
+
   .normal {
     background: url('/images/buttons/normal.svg') no-repeat center center;
   }
+
   .dragon {
     background: url('/images/buttons/dragon.svg') no-repeat center center;
   }
+
   .bug {
     background: url('/images/buttons/bug.svg') no-repeat center center;
   }
+
   .grass {
     background: url('/images/buttons/grass.svg') no-repeat center center;
   }
+
   .flying {
     background: url('/images/buttons/flying.svg') no-repeat center center;
   }
+
   .rock {
     background: url('/images/buttons/rock.svg') no-repeat center center;
   }
+
   .dark {
     background: url('/images/buttons/dark.svg') no-repeat center center;
   }
+
   .ghost {
     background: url('/images/buttons/ghost.svg') no-repeat center center;
   }
+
   .psychic {
     background: url('/images/buttons/psychic.svg') no-repeat center center;
   }
+
   .fight {
     background: url('/images/buttons/fight.svg') no-repeat center center;
   }
