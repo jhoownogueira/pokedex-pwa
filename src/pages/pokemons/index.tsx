@@ -21,20 +21,24 @@ interface PokemonAPIProps {
 }
 
 const typeColors: { [key: string]: string } = {
-    fire: '#FDDFDF',
-    grass: '#DEFDE0',
-    electric: '#FCF7DE',
-    water: '#DEF3FD',
-    ground: '#f4e7da',
-    rock: '#d5d5d4',
-    fairy: '#fceaff',
-    poison: '#98d7a5',
-    bug: '#f8d5a3',
-    dragon: '#97b3e6',
-    psychic: '#eaeda1',
-    flying: '#F5F5F5',
-    fighting: '#E6E0D4',
-    normal: '#F5F5F5'
+    fire: '#F080304D',
+    grass: '#74CB484D',
+    electric: '#F8D0304D',
+    water: '#6890F04D',
+    ground: '#E0C0684D',
+    rock: '#B8A0384D',
+    fairy: '#DEA5DE4D',
+    poison: '#A040A04D',
+    bug: '#A8B8204D',
+    dragon: '#7038F84D',
+    psychic: '#E853804D',
+    flying: '#A890F04D',
+    fighting: '#C030284D',
+    normal: '#A8A8784D',
+    steel: '#B8B8D04D',
+    ice: '#98D8D84D',
+    dark: '#7058484D',
+    ghost: '#7058984D'
 };
 
 export default function Pokemons() {

@@ -40,7 +40,7 @@ const getTypeBackground = (type: string) => {
             return "url('/images/pokemon/bg/ghost.png')";
         case "psychic":
             return "url('/images/pokemon/bg/psychic.png')";
-        case "fight":
+        case "fighting":
             return "url('/images/pokemon/bg/fight.png')";
         default:
             return "";
@@ -83,7 +83,7 @@ const getTypeButton = (type: string) => {
             return "url('/images/buttons/ghost.svg')";
         case "psychic":
             return "url('/images/buttons/psychic.svg')";
-        case "fight":
+        case "fighting":
             return "url('/images/buttons/fight.svg')";
         default:
             return "";
@@ -126,7 +126,7 @@ const getTypeColor = (type: string) => {
             return "#705898";
         case "psychic":
             return "#E85380";
-        case "fight":
+        case "fighting":
             return "#C03028";
         default:
             return "";

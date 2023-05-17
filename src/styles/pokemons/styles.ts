@@ -48,27 +48,27 @@ export const CardPokemons = styled.a`
   justify-content: center;
   align-items: center;
   background: #fff;
-  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   text-decoration: none;
   color: #666666;
-  
+
   header {
     width: 100%;
     display: flex;
     justify-content: end;
     padding-right: 8px;
-    
+
     span {
       font-size: 8px;
     }
   }
-  
+
   img {
     width: 64px;
     height: 64px;
   }
-  
+
   footer {
     width: 100%;
     height: 29px;
@@ -76,6 +76,7 @@ export const CardPokemons = styled.a`
     justify-content: center;
     align-items: center;
     background: #EFEFEF;
+
     h2 {
       font-size: 8px;
       color: #666666;
