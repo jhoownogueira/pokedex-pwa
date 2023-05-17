@@ -23,7 +23,7 @@ export const PokemonsContextProvider = ({children} : PokemonsProvider) => {
 
 
     useEffect(() => {
-        api.get('/pokemon?limit=1000000&offset=0').then(response => {
+        api.get('/pokemon?limit=21&offset=0').then(response => {
             setPokemonsList(response.data.results)
         })
     }, [])
