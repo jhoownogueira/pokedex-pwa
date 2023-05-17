@@ -49,9 +49,8 @@ export default function Pokemons() {
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleSearch = (searchTerm: string) => {
-        setSearchTerm(searchTerm);
+        setSearchTerm(searchTerm.toLowerCase());
     };
-
 
 
     const loadMorePokemons = () => {

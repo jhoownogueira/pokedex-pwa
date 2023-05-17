@@ -12,41 +12,65 @@ export const HeaderPokemons = styled.header`
   background: url("/images/headerPokemons/bg.svg") no-repeat center center;
   background-size: cover;
   
-  .field {
-    padding-top: 16px;
-    position: relative;
-    width: 100%;
-    input {
-      width: 100%;
+  .top {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 8px;
+    
+    .buscar {
+      min-width: 48px;
       height: 48px;
-      padding: 16px 48px 16px 16px;
       border: 0;
       background: rgba(255, 255, 255, 0.3);
       border-radius: 4px;
       color: #fff;
-      font-size: 16px;
-      &::placeholder {
+    }
+    
+    .limpar {
+      min-width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+      color: #fff;
+    }
+    
+    .field {
+      padding-top: 16px;
+      position: relative;
+      width: 100%;
+      input {
+        width: 100%;
+        height: 48px;
+        padding: 16px 48px 16px 16px;
+        border: 0;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 4px;
         color: #fff;
-      }
-      
-      &:focus {
-        outline: none;
-        border: 1px solid #fff;
+        font-size: 16px;
+        &::placeholder {
+          color: #fff;
+        }
+
+        &:focus {
+          outline: none;
+          border: 1px solid #fff;
+        }
       }
     }
     
-    img {
-      position: absolute;
-      right: 12px;
-      top: 22px;
-    }
+    
   }
   
   .buttons {
     margin-top: 32px;
     display: flex;
     justify-content: end;
-    button {
+    .filtro {
       width: 100%;
       max-width: 150px;
       height: 32px;
