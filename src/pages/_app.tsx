@@ -3,6 +3,9 @@ import { GlobalStyles } from "@/styles/global";
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "@/styles/themes/default";
 import {PokemonsContextProvider} from "@/context/pokemonsContext";
+import Modal from "react-modal";
+
+Modal.setAppElement("#__next");
 
 type ComponentWithPageLayout = AppProps & {
     Component: AppProps["Component"] & {

@@ -47,11 +47,15 @@ export default function Pokemons() {
     const [loading, setLoading] = useState(true);
     const [offset, setOffset] = useState(0);
     const [searchTerm, setSearchTerm] = useState("");
+    const [filterType, setFilterType] = useState("");
 
     const handleSearch = (searchTerm: string) => {
         setSearchTerm(searchTerm.toLowerCase());
     };
 
+    const handleFilter = (filterType: string) => {
+        setFilterType(filterType.toLowerCase());
+    };
 
     const loadMorePokemons = () => {
         setOffset((prevOffset) => prevOffset + 21);
@@ -86,7 +90,16 @@ export default function Pokemons() {
 
     const fetchPokemonsData = async () => {
         setLoading(true);
-        const response = await api.get(`/pokemon?limit=21&offset=${offset}`);
+
+        let url = "";
+
+        if (filterType) {
+            url = `/pokemon?limit=1000000&offset=${offset}`;
+        } else {
+            url = `/pokemon?limit=21&offset=${offset}`;
+        }
+
+        const response = await api.get(url);
         const newPokemonsList = response.data.results;
 
         const updatedPokemonsList = await Promise.all(
@@ -108,7 +121,11 @@ export default function Pokemons() {
             })
         );
 
-        setPokemons(updatedPokemonsList);
+        const filteredPokemonsList = filterType
+            ? updatedPokemonsList.filter((pokemon) => pokemon.type.toLowerCase() === filterType)
+            : updatedPokemonsList;
+
+        setPokemons(filteredPokemonsList);
         setLoading(false);
     };
 
@@ -124,7 +141,7 @@ export default function Pokemons() {
         } else {
             fetchPokemonsData().then();
         }
-    }, [searchTerm]);
+    }, [searchTerm, filterType]);
 
 
     if (loading) {
@@ -148,7 +165,7 @@ export default function Pokemons() {
 
 
     return (
-        <PokemonsLayout onSearch={handleSearch}>
+        <PokemonsLayout onSearch={handleSearch} onFilter={handleFilter}>
             {pokemons.length === 0 ?
                 <>
                     <ContainerNotFound>
