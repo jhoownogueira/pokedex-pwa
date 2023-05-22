@@ -48,6 +48,7 @@ export default function Pokemons() {
     const [offset, setOffset] = useState(0);
     const [searchTerm, setSearchTerm] = useState("");
     const [filterType, setFilterType] = useState("");
+    const [hasMorePokemons, setHasMorePokemons] = useState(true);
 
     const handleSearch = (searchTerm: string) => {
         setSearchTerm(searchTerm.toLowerCase());
@@ -101,6 +102,12 @@ export default function Pokemons() {
 
         const response = await api.get(url);
         const newPokemonsList = response.data.results;
+
+        if (newPokemonsList.length < 21) {
+            setHasMorePokemons(false);
+        } else {
+            setHasMorePokemons(true);
+        }
 
         const updatedPokemonsList = await Promise.all(
             newPokemonsList.map(async (pokemon: PokemonAPIProps) => {
@@ -193,10 +200,12 @@ export default function Pokemons() {
                     })}
                 </div>
                 <div className="pagination">
-                    <button onClick={loadPreviousPokemons} disabled={offset === 0}>
+                    <button onClick={loadPreviousPokemons} hidden={offset === 0 || searchTerm.length > 0 || filterType.length > 0}>
                         <CaretLeft size={24} />
                     </button>
-                    <button onClick={loadMorePokemons}><CaretRight size={24} /></button>
+                    <button onClick={loadMorePokemons} hidden={!hasMorePokemons || searchTerm.length > 0 || filterType.length > 0}>
+                        <CaretRight size={24} />
+                    </button>
                 </div>
             </PokemonsContainer>}
         </PokemonsLayout>

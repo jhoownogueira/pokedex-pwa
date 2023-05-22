@@ -41,6 +41,14 @@ export function PokemonsLayout({children, onSearch, onFilter}: { children: React
         closeModal();
     };
 
+    useEffect(() => {
+        if (modalIsOpen) {
+            document.body.classList.add('body-lock');
+        } else {
+            document.body.classList.remove('body-lock');
+        }
+    }, [modalIsOpen])
+
 
     useEffect(() => {
         const fetchTypes = async () => {
@@ -90,8 +98,9 @@ export function PokemonsLayout({children, onSearch, onFilter}: { children: React
                 <Modal
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}
-                    contentLabel="Filtro Modal"
-                    overlayClassName="modal-overlay"
+                    ariaHideApp={false}
+                    overlayClassName="react-modal-overlay"
+                    className="react-modal-content"
                 >
                     <ContainerModalFiltro>
                         <header>

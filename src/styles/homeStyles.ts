@@ -103,13 +103,16 @@ export const HomeContainer = styled.div`
     }
     
     footer {
+      margin-top: 1rem;
       width: 100%;
       height: 80px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 0.5rem;
       
-      a {
+      a, button {
         width: 100%;
         max-width: 280px;
         height: 48px;
@@ -120,10 +123,12 @@ export const HomeContainer = styled.div`
         align-items: center;
         justify-content: center;
         transition: all 0.2s;
+        font-size: 16px;
+        color: #fff;
+        padding-bottom: 1rem;
+        padding-top: 0.8rem;
         span {
-          font-size: 16px;
-          color: #fff;
-          margin-bottom: 6px;
+          
         }
         
         &:hover {

@@ -2,8 +2,49 @@ import Head from "next/head";
 import {HomeContainer} from "@/styles/homeStyles";
 import Link from "next/link";
 import {DefaultLayout} from "@/layouts/default";
+import {useEffect, useState} from "react";
+
+interface BeforeInstallPromptEvent extends Event {
+    prompt: () => void;
+    userChoice: Promise<{
+        outcome: 'accepted' | 'dismissed',
+        platform: string
+    }>;
+}
 
 export default function Home() {
+
+    const [installPromptEvent, setInstallPromptEvent] = useState<BeforeInstallPromptEvent | null>(null);
+
+    useEffect(() => {
+        const beforeInstallPromptHandler = (event: BeforeInstallPromptEvent) => {
+            event.preventDefault();
+            setInstallPromptEvent(event);
+        };
+
+        window.addEventListener('beforeinstallprompt', beforeInstallPromptHandler as any);
+
+        return () => {
+            window.removeEventListener('beforeinstallprompt', beforeInstallPromptHandler as any);
+        };
+    }, []);
+
+    const handleInstallClick = async () => {
+        if (!installPromptEvent) {
+            return;
+        }
+
+        installPromptEvent.prompt();
+
+        const { outcome } = await installPromptEvent.userChoice;
+        if (outcome === 'accepted') {
+            console.log("Usuário instalou a aplicação!");
+        } else {
+            console.log("Usuário NÃO instalou a aplicação!");
+        }
+
+        setInstallPromptEvent(null);
+    };
 
   return (
       <>
@@ -45,6 +86,7 @@ export default function Home() {
 
                 <footer>
                     <Link href="/pokemons"><span>Entrar</span></Link>
+                    <button onClick={handleInstallClick}>Instalar</button>
                 </footer>
             </section>
         </HomeContainer>

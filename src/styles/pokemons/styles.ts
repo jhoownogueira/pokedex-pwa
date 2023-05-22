@@ -27,10 +27,14 @@ export const PokemonsContainer = styled.section`
       width: 100%;
       height: 32px;
       border: 1px solid #D42B4D;
-      border-radius: 999px;
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
+      
+      &[hidden] {
+        display: none;
+      }
       
       svg {
         color: #D42B4D;

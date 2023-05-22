@@ -100,5 +100,6 @@ export const ButtonCardFilter = styled.button<PokemonsTypePros>`
   font-size: 10px;
   border: 0;
   border-radius: 4px;
+  color: #000000;
 
 `
