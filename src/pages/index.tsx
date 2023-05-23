@@ -15,6 +15,7 @@ interface BeforeInstallPromptEvent extends Event {
 export default function Home() {
 
     const [installPromptEvent, setInstallPromptEvent] = useState<BeforeInstallPromptEvent | null>(null);
+    const [isAppInstalled, setIsAppInstalled] = useState(false);
 
     useEffect(() => {
         const beforeInstallPromptHandler = (event: BeforeInstallPromptEvent) => {
@@ -22,10 +23,21 @@ export default function Home() {
             setInstallPromptEvent(event);
         };
 
+        const appInstalledHandler = () => {
+            setIsAppInstalled(true);
+        };
+
         window.addEventListener('beforeinstallprompt', beforeInstallPromptHandler as any);
+        window.addEventListener('appinstalled', appInstalledHandler);
+
+        // Para dispositivos iOS
+        if ("standalone" in window.navigator && window.navigator.standalone) {
+            setIsAppInstalled(true);
+        }
 
         return () => {
             window.removeEventListener('beforeinstallprompt', beforeInstallPromptHandler as any);
+            window.removeEventListener('appinstalled', appInstalledHandler);
         };
     }, []);
 
@@ -86,7 +98,7 @@ export default function Home() {
 
                 <footer>
                     <Link href="/pokemons"><span>Entrar</span></Link>
-                    <button onClick={handleInstallClick}>Instalar</button>
+                    { !isAppInstalled && <button onClick={handleInstallClick}>Instalar</button> }
                 </footer>
             </section>
         </HomeContainer>

@@ -103,14 +103,14 @@ export const HomeContainer = styled.div`
     }
     
     footer {
-      margin-top: 1rem;
+      margin-top: 2rem;
       width: 100%;
       height: 80px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
+      gap: 1rem;
       
       a, button {
         width: 100%;
